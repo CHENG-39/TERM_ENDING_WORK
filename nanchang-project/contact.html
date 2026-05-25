@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>豫章有约 - 魅力南昌</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 关于页特有样式 */
+    .route-section {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 50px;
+    }
+
+    .route-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .route-table th,
+    .route-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .route-table th {
+      background-color: var(--primary-color);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .route-table tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    .route-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .badge-day1 {
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .badge-day2 {
+      background-color: #fff3e0;
+      color: #f57c00;
+    }
+
+    /* 留言板样式 */
+    .message-section {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .message-form {
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-submit:hover {
+      background-color: #a00d25;
+      transform: translateY(-2px);
+    }
+
+    /* 留言列表 */
+    .message-list {
+      max-width: 800px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .message-item {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .visitor-name {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    .message-date {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .message-content {
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .empty-message {
+      text-align: center;
+      color: var(--text-light);
+      padding: 30px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">魅力南昌</a>
+      <div class="hamburger">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="history.html">千年文脉</a></li>
+        <li><a href="food.html">市井烟火</a></li>
+        <li><a href="modern.html">摩登洪城</a></li>
+        <li><a href="contact.html" class="active">豫章有约</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">豫章有约</h1>
+    <p class="page-subtitle">规划您的南昌之旅，留下美好回忆</p>
+
+    <!-- 旅游路线 -->
+    <section class="route-section">
+      <h2 style="color:var(--primary-color); margin-bottom:15px;">推荐旅游路线</h2>
+      <table class="route-table">
+        <thead>
+          <tr>
+            <th>时间</th>
+            <th>行程安排</th>
+            <th>亮点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="route-badge badge-day1">第一天</span></td>
+            <td>滕王阁 → 八一起义纪念馆 → 万寿宫历史文化街区</td>
+            <td>登名楼览赣江，缅怀革命历史，品味老街美食</td>
+          </tr>
+          <tr>
+            <td><span class="route-badge badge-day2">第二天</span></td>
+            <td>海昏侯国遗址公园 → 红谷滩 CBD → 秋水广场音乐喷泉</td>
+            <td>探秘汉代瑰宝，感受现代都市，欣赏亚洲最大喷泉</td>
+          </tr>
+          <tr>
+            <td><span class="route-badge badge-day2">第二天</span></td>
+            <td>南昌之星摩天轮 → 赣江市民公园 → 珠宝街美食探店</td>
+            <td>高空俯瞰全城，悠闲漫步江畔，地道小吃一网打尽</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 访客留言板 -->
+    <section class="message-section">
+      <h2 style="text-align:center; color:var(--primary-color); margin-bottom:10px;">访客留言板</h2>
+      <p style="text-align:center; color:var(--text-light); margin-bottom:30px;">分享您的南昌故事，或给后来的游客一些建议吧！</p>
+
+      <!-- 留言表单 -->
+      <form id="message-form" class="message-form">
+        <div class="form-group">
+          <label for="visitor-name">您的姓名</label>
+          <input type="text" id="visitor-name" placeholder="请输入您的称呼" required>
+        </div>
+        <div class="form-group">
+          <label for="visitor-content">留言内容</label>
+          <textarea id="visitor-content" placeholder="分享您的旅行体验、建议或祝福..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">提交留言</button>
+      </form>
+
+      <!-- 留言列表 -->
+      <ul id="message-list" class="message-list">
+        <!-- 留言将通过 JS 动态添加到这里 -->
+        <li class="empty-message">暂无留言，快来成为第一个留言的人吧！</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 魅力南昌城市介绍网 | Web 前端开发期末大作业</p>
+      <p>Designed by <span>你的名字</span> (学号：XXXXXX)</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
