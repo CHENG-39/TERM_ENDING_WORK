@@ -1,0 +1,352 @@
+/* =========================================
+   1. CSS 变量定义 (全局配色方案)
+   方便统一修改主题色，符合现代 CSS 规范
+   ========================================= */
+:root {
+  --primary-color: #C8102E; /* 英雄红：主按钮、强调色 */
+  --accent-color: #C9A961;  /* 滕阁金：装饰线、副标题 */
+  --text-color: #333333;    /* 正文黑：主要文字颜色 */
+  --text-light: #666666;    /* 辅助灰：次要文字 */
+  --bg-color: #f9f9f9;      /* 页面浅灰背景 */
+  --white: #ffffff;         /* 卡片/导航栏白 */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 通用阴影 */
+  --transition: all 0.3s ease; /* 通用过渡动画 */
+}
+
+/* =========================================
+   2. 全局重置与基础样式 (Reset & Base)
+   消除浏览器默认样式，设定字体
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 关键：让边框和内边距不增加元素总宽度 */
+}
+
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 保证页脚始终在底部 */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover; /* 防止图片变形 */
+}
+
+/* =========================================
+   3. 顶部导航栏 (Header & Nav)
+   使用 Flexbox 实现左右布局，包含移动端汉堡菜单
+   ========================================= */
+header {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  position: sticky; /* 滚动时吸顶 */
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 左侧 Logo/网站名 */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+/* 右侧导航链接 */
+.nav-links {
+  display: flex;
+  gap: 30px; /* 链接之间的间距 */
+}
+
+.nav-links li a {
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+/* 导航链接 Hover 效果：下方出现金色短线 */
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--primary-color);
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+  width: 100%;
+}
+
+
+/* =========================================
+   4. 主体内容容器 (Main Container)
+   限制最大宽度，居中显示
+   ========================================= */
+main {
+  flex: 1; /* 让 main 占据剩余空间，把 footer 挤到底部 */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+/* 通用页面标题样式 */
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.page-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   5. 通用卡片组件 (Card Component)
+   用于首页、历史页等，带 Hover 上浮效果
+   ========================================= */
+.card-grid {
+  display: grid;
+  /* 桌面固定三列布局（移除移动端自动换列逻辑） */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative; /* 用于悬浮提示伪元素定位 */
+  -webkit-tap-highlight-color: transparent; /* 移动端触摸高亮优化 */
+}
+
+/* 卡片 Hover：仅提示可点击（取消上浮，保留轻微阴影和边框高亮） */
+.card:hover {
+  transform: none; /* 取消上浮位移，避免浮动特效 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); /* 轻微阴影提示可交互 */
+  outline: 2px solid rgba(200, 16, 46, 0.06); /* 微弱红色边框强调可点击 */
+}
+
+.card-img-wrapper {
+  height: 200px;
+  overflow: hidden; /* 配合内部图片放大效果 */
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease, filter 0.25s ease;
+}
+
+/* 图片 Hover：不放大，仅略微提亮以提示可点击 */
+.card:hover .card-img-wrapper img {
+  transform: none;
+  filter: brightness(1.02);
+}
+
+/* 小提示：在卡片上显示“点击查看”并支持键盘焦点 */
+.card::after {
+  content: '点击查看';
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translate(-50%, 6px);
+  background: rgba(0, 0, 0, 0.56);
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.card:hover::after,
+.card:focus::after,
+.card:focus-within::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* 键盘可见焦点样式（只在键盘导航时显示） */
+.card:focus-visible {
+  outline: 3px solid rgba(200, 16, 46, 0.12);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+/* 触摸 / 点击时的快速反馈（主要用于移动端） */
+.card:active {
+  transform: none;
+}
+.card:active .card-img-wrapper img {
+  filter: brightness(0.98);
+}
+
+/* 尊重用户的动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card-img-wrapper img,
+  .card::after {
+    transition: none !important;
+  }
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.card-text {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   6. 底部页脚 (Footer)
+   ========================================= */
+footer {
+  background-color: #2c2c2c;
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: auto;
+}
+
+.footer-content p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-content span {
+  color: var(--accent-color);
+}
+
+/* =========================================
+   留言板样式（优化删除按钮）
+   ========================================= */
+#message-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.message-item {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.visitor-name {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.message-date {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.message-content {
+  color: var(--text-color);
+  white-space: pre-wrap;
+  font-size: 0.98rem;
+}
+
+.delete-btn {
+  background: transparent;
+  border: 1px solid rgba(200,16,46,0.12);
+  color: var(--primary-color);
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.delete-btn .icon-trash {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  stroke: currentColor;
+}
+
+.delete-btn:hover {
+  background: rgba(200,16,46,0.06);
+  box-shadow: 0 4px 8px rgba(200,16,46,0.06);
+  transform: translateY(-1px);
+}
+
+.delete-btn:active {
+  transform: translateY(0);
+}
+
+.delete-btn:focus {
+  outline: 3px solid rgba(200,16,46,0.12);
+  outline-offset: 2px;
+}
+

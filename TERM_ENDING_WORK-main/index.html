@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>魅力南昌 - 遇见英雄城</title>
+  <!-- 引入全局样式 -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- 页面独有样式 (主要用于 Banner) -->
+  <style>
+    /* 首页特有：Banner（支持图片或渐变的背景） */
+    .hero-banner {
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      /* 渐变作为默认/叠层色彩 */
+      background: linear-gradient(135deg, #0f2027, #203a43, #C8102E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      border-radius: 0 0 20px 20px; /* 底部圆角 */
+      margin-bottom: 40px;
+      padding: 20px;
+    }
+
+    /* 背景图片容器：将图片放入 images/hero.jpg 即可生效 */
+    .hero-banner .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /* 默认占位图片（可替换为 images/hero.jpg） */
+      background-image: url('images/hero.jpg');
+      filter: brightness(0.64) saturate(0.95);
+      transform: scale(1.02);
+      transition: transform 0.6s ease, filter 0.3s ease;
+    }
+
+    /* 叠加渐变，保证文字可读 */
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,32,39,0.35), rgba(200,16,46,0.15));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* 将文本放在最上层 */
+    .hero-banner .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      letter-spacing: 5px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: var(--accent-color);
+      font-weight: 300;
+    }
+
+         /* 首页“探索英雄城”按钮样式 */
+    .btn-explore {
+      display: inline-block; /* 让链接变成块级元素，这样才能设置宽高和内边距 */
+      padding: 12px 30px;
+      background-color: var(--primary-color); /* 使用主题色（红色） */
+      color: var(--white); /* 白色文字 */
+      text-decoration: none; /* 去掉链接默认的下划线 */
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer; /* 鼠标悬停显示小手，提示可点击 */
+      transition: background-color 0.3s; /* 仅保留颜色平滑过渡 */
+    }
+
+    /* 鼠标悬停时：颜色明显变深，提示用户“这里可以点击” */
+    .btn-explore:hover {
+      background-color: #8a0a1e; /* 比主题色更深一点，交互感更强 */
+    }
+
+    /* 鼠标点击按下时：保持深色状态，没有任何位移 */
+    .btn-explore:active {
+      background-color: #8a0a1e;
+      transform: none; /* 强制禁止任何位移 */
+    }
+    /* 特色卡片区标题装饰 */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-header h2 {
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    /* 标题下方的金色短线 */
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航栏 (所有页面共用) -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">魅力南昌</a>
+      
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">首页</a></li>
+        <li><a href="history.html">千年文脉</a></li>
+        <li><a href="food.html">市井烟火</a></li>
+        <li><a href="modern.html">摩登洪城</a></li>
+        <li><a href="contact.html">豫章有约</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner 区域 -->
+    <section class="hero-banner">
+      <!-- 将图片放到 images/hero.jpg 即可生效 -->
+      <div class="hero-bg" style="background-image: url('images/.jpg');" role="img" aria-label="南昌风光背景"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">物华天宝 人杰地灵</h1>
+        <p class="hero-subtitle">遇见 · 南昌</p>
+        <a href="#features" class="btn-explore">探索英雄城</a>
+      </div>
+    </section>
+
+    <!-- 特色卡片区 -->
+    <section id="features">
+      <div class="section-header">
+        <h2>城市印象</h2>
+        <p style="margin-top: 10px; color: #666;">Click to explore the charm of Nanchang</p>
+      </div>
+
+      <div class="card-grid">
+        <!-- 卡片 1：历史 -->
+        <a href="history.html" class="card">
+          <div class="card-img-wrapper">
+            <!-- ⚠️ 请确保 images/tengwangge.jpg 存在，否则显示 alt 文字 -->
+            <img src="images/tengwangge.jpg" alt="滕王阁" onerror="this.style.display='none';this.parentElement.innerText='图片缺失：请放入 tengwangge.jpg'">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">千年文脉</h3>
+            <p class="card-text">落霞与孤鹜齐飞，秋水共长天一色。探寻江南名楼与汉代海昏侯的历史回响。</p>
+          </div>
+        </a>
+
+        <!-- 卡片 2：美食 -->
+        <a href="food.html" class="card">
+          <div class="card-img-wrapper">
+            <img src="images/banfen.jpg" alt="南昌拌粉" onerror="this.style.display='none';this.parentElement.innerText='图片缺失：请放入 banfen.jpg'">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">市井烟火</h3>
+            <p class="card-text">一碗拌粉，一罐瓦罐汤。品味恰噶的南昌味道，聆听地道的方言故事。</p>
+          </div>
+        </a>
+
+        <!-- 卡片 3：现代 -->
+        <a href="modern.html" class="card">
+          <div class="card-img-wrapper">
+            <img src="images/honggutan.jpg" alt="红谷滩 CBD" onerror="this.style.display='none';this.parentElement.innerText='图片缺失：请放入 honggutan.jpg'">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">摩登洪城</h3>
+            <p class="card-text">赣江两岸灯光秀，VR 产业新高地。感受豫章故郡的现代活力与腾飞。</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 底部页脚 (所有页面共用) -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023 魅力南昌城市介绍网 | Web 前端开发期末大作业</p>
+      <p>Designed by <span>你的名字</span> (学号：XXXXXX)</p>
+    </div>
+  </footer>
+
+  <!-- 引入公共脚本 -->
+  <script src="js/main.js"></script>
+</body>
+</html>
