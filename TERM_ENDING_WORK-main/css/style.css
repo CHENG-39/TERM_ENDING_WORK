@@ -11,11 +11,11 @@
   --white: #ffffff;         /* 卡片/导航栏白 */
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 通用阴影 */
   --transition: all 0.3s ease; /* 通用过渡动画 */
-  /* 🎨 南昌主题背景优化：赣江水韵色系 */
-  --bg-nanchang-base: linear-gradient(180deg, #F5F3EE 0%, #E8E6E1 100%); /* 米白渐变基底 */
-  --bg-nanchang-hero: linear-gradient(135deg, rgba(74, 124, 140, 0.92) 0%, rgba(46, 74, 61, 0.88) 100%); /* 赣江蓝×滕王阁青灰 */
+  /* 🏯 南昌国风主题：宣纸暖白×黛墨微灰基底 */
+  --bg-nanchang-base: linear-gradient(180deg, #F7F4ED 0%, #F2EFE8 100%); /* 宣纸暖白渐变 */
+  --bg-nanchang-hero: linear-gradient(135deg, rgba(46, 52, 59, 0.92) 0%, rgba(53, 60, 68, 0.88) 100%); /* 黛墨微灰渐变 */
   --bg-nanchang-card: #ffffff; /* 卡片纯白背景 */
-  --bg-nanchang-footer: linear-gradient(180deg, #2E4A3D 0%, #1a2a24 100%); /* 滕王阁青灰渐变 */
+  --bg-nanchang-footer: linear-gradient(180deg, #353C44 0%, #2E343B 100%); /* 黛墨微灰渐变 */
 }
 
 /* =========================================
@@ -30,7 +30,7 @@
 
 body {
   font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-  background: var(--bg-nanchang-base); /* 🎨 南昌主题背景优化：米白渐变基底 */
+  background: var(--bg-nanchang-base); /* 🏯 南昌国风主题：宣纸暖白渐变 */
   color: var(--text-color);
   line-height: 1.6;
   display: flex;
@@ -58,7 +58,7 @@ img {
    使用 Flexbox 实现左右布局，包含移动端汉堡菜单
    ========================================= */
 header {
-  background: var(--white); /* 🎨 南昌主题背景优化：保持纯白导航栏确保可读性 */
+  background: var(--white); /* 🏯 南昌国风主题：纯白导航栏确保可读性 */
   box-shadow: var(--shadow);
   position: sticky; /* 滚动时吸顶 */
   top: 0;
@@ -157,7 +157,7 @@ main {
 }
 
 .card {
-  background: var(--bg-nanchang-card); /* 🎨 南昌主题背景优化：卡片纯白背景 */
+  background: var(--bg-nanchang-card); /* 🏯 南昌国风主题：卡片纯白背景 */
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -257,7 +257,7 @@ main {
    6. 底部页脚 (Footer)
    ========================================= */
 footer {
-  background: var(--bg-nanchang-footer); /* 🎨 南昌主题背景优化：滕王阁青灰渐变 */
+  background: var(--bg-nanchang-footer); /* 🏯 南昌国风主题：黛墨微灰渐变 */
   color: var(--white);
   text-align: center;
   padding: 30px 20px;
@@ -285,7 +285,7 @@ footer {
 }
 
 .message-item {
-  background: var(--bg-nanchang-card); /* 🎨 南昌主题背景优化：留言卡片纯白背景 */
+  background: var(--bg-nanchang-card); /* 🏯 南昌国风主题：留言卡片纯白背景 */
   border-radius: 8px;
   padding: 14px 16px;
   box-shadow: var(--shadow);
