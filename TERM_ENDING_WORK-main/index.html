@@ -13,8 +13,8 @@
       height: 500px;
       position: relative;
       overflow: hidden;
-      /* 渐变作为默认/叠层色彩 */
-      background: linear-gradient(135deg, #0f2027, #203a43, #C8102E);
+      /* 🎨 南昌主题背景优化：赣江水韵渐变主色 */
+      background: var(--bg-nanchang-hero);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -44,7 +44,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(15,32,39,0.35), rgba(200,16,46,0.15));
+      /* 🎨 南昌主题背景优化：降低遮罩透明度至 8% 提升层次 */
+      background: linear-gradient(135deg, rgba(74, 124, 140, 0.08), rgba(46, 74, 61, 0.08));
       z-index: 1;
       pointer-events: none;
     }
