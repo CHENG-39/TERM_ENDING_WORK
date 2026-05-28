@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>豫章有约 - 魅力南昌</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 关于页特有样式 */
+    
+    /* 旅游路线表格 */
+    .route-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+
+    .route-table th,
+    .route-table td {
+      padding: 15px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .route-table th {
+      background-color: var(--primary-color);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .route-table tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .route-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 留言板样式 */
+    .message-section {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .message-form {
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      padding: 12px 30px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-submit:hover {
+      background-color: #a00d25;
+      transform: translateY(-2px);
+    }
+
+    /* 留言列表 */
+    .message-list {
+      list-style: none;
+    }
+
+    .message-item {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .visitor-name {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    .message-date {
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    .message-content {
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .empty-message {
+      text-align: center;
+      color: #999;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">魅力南昌</a>
+      <div class="hamburger">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="history.html">千年文脉</a></li>
+        <li><a href="food.html">市井烟火</a></li>
+        <li><a href="modern.html">摩登洪城</a></li>
+        <li><a href="contact.html" class="active">豫章有约</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">豫章有约</h1>
+    <p class="page-subtitle">规划您的南昌之旅，分享美好体验</p>
+
+    <!-- 旅游路线 -->
+    <section>
+      <h2 style="margin-bottom: 20px; color: var(--text-color);">推荐旅游路线</h2>
+      <table class="route-table">
+        <thead>
+          <tr>
+            <th style="width: 80px;">天数</th>
+            <th>行程安排</th>
+            <th style="width: 150px;">美食推荐</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>一日游</strong></td>
+            <td>上午：滕王阁 → 下午：八一起义纪念馆 → 晚上：秋水广场看喷泉</td>
+            <td>拌粉、瓦罐汤</td>
+          </tr>
+          <tr>
+            <td><strong>两日游</strong></td>
+            <td>D1: 滕王阁 → 万寿宫历史文化街区 → 秋水广场<br>D2: 海昏侯国遗址公园 → 红谷滩 CBD → 南昌之星摩天轮</td>
+            <td>藜蒿炒腊肉、白糖糕、赣菜</td>
+          </tr>
+          <tr>
+            <td><strong>三日游</strong></td>
+            <td>D1-D2 同上<br>D3: 梅岭国家森林公园 → 八一公园 → 孺子路美食街</td>
+            <td>农家菜、糊羹、油条包麻糍</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 访客留言板 (JS 核心亮点) -->
+    <section class="message-section">
+      <h2 style="margin-bottom: 20px; color: var(--text-color);">访客留言板</h2>
+      <p style="margin-bottom: 25px; color: var(--text-light);)">留下您对南昌的印象或旅行建议，与其他游客分享！</p>
+
+      <!-- 留言表单 -->
+      <form id="message-form" class="message-form">
+        <div class="form-group">
+          <label for="visitor-name">您的姓名</label>
+          <input type="text" id="visitor-name" placeholder="请输入您的称呼" required>
+        </div>
+        <div class="form-group">
+          <label for="visitor-content">留言内容</label>
+          <textarea id="visitor-content" placeholder="分享您的南昌故事或旅行建议..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">提交留言</button>
+      </form>
+
+      <!-- 留言列表 -->
+      <h3 style="margin-bottom: 15px; color: var(--text-color); font-size: 1.2rem;">最新留言</h3>
+      <ul id="message-list" class="message-list">
+        <!-- 留言将通过 JS 动态添加到这里 -->
+        <li class="empty-message">暂无留言，快来成为第一个留言的人吧！</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023 魅力南昌城市介绍网 | Web 前端开发期末大作业</p>
+      <p>Designed by <span>你的名字</span> (学号：XXXXXX)</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

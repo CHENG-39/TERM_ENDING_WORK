@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>市井烟火 - 魅力南昌</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 美食页特有样式 */
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+
+    .food-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .food-card h3 {
+      padding: 15px;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .food-card p {
+      padding: 0 15px 15px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* 南昌话词典 - 3D 翻转卡片核心样式 */
+    .dialect-section {
+      margin-top: 60px;
+    }
+
+    .dialect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .dialect-card {
+      background-color: transparent;
+      width: 100%;
+      height: 250px;
+      perspective: 1000px; /* 3D 透视效果 */
+    }
+
+    .dialect-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d; /* 保持 3D 空间 */
+    }
+
+    /* 鼠标悬停时翻转 180 度 */
+    .dialect-card:hover .dialect-inner {
+      transform: rotateY(180deg);
+    }
+
+    .dialect-front, .dialect-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* 隐藏背面 */
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    /* 正面样式 */
+    .dialect-front {
+      background-color: var(--white);
+      color: var(--text-color);
+      border: 2px solid var(--accent-color);
+    }
+
+    .dialect-front h3 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .dialect-front p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* 背面样式 */
+    .dialect-back {
+      background-color: var(--primary-color);
+      color: var(--white);
+      transform: rotateY(180deg); /* 初始状态旋转 180 度 */
+    }
+
+    .dialect-back h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .dialect-back p {
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">魅力南昌</a>
+      <div class="hamburger">☰</div>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="history.html">千年文脉</a></li>
+        <li><a href="food.html" class="active">市井烟火</a></li>
+        <li><a href="modern.html">摩登洪城</a></li>
+        <li><a href="contact.html">豫章有约</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">恰噶！南昌味道</h1>
+    <p class="page-subtitle">品味地道美食，聆听赣语乡音</p>
+
+    <!-- 美食展示区 -->
+    <section>
+      <h2 style="text-align: center; margin-bottom: 30px; color: var(--text-color);">必吃美食</h2>
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="images/banfen.jpg" alt="南昌拌粉" onerror="this.style.display='none';this.parentElement.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#999;\'>图片缺失：请放入 banfen.jpg</div>'">
+          <h3>南昌拌粉</h3>
+          <p>爽滑劲道的米粉，配上萝卜干、花生米、辣椒油，搅拌均匀，香气扑鼻。是南昌人早餐的绝对主角。</p>
+        </div>
+
+        <div class="food-card">
+          <img src="images/waguan.jpg" alt="瓦罐汤" onerror="this.style.display='none';this.parentElement.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#999;\'>图片缺失：请放入 waguan.jpg</div>'">
+          <h3>瓦罐汤</h3>
+          <p>用传统瓦罐慢火煨制数小时，汤汁浓郁，营养丰富。排骨藕汤、鸡蛋肉饼汤都是经典选择。</p>
+        </div>
+
+        <div class="food-card">
+          <img src="images/baitanggao.jpg" alt="白糖糕" onerror="this.style.display='none';this.parentElement.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#999;\'>图片缺失：请放入 baitanggao.jpg</div>'">
+          <h3>白糖糕</h3>
+          <p>南昌传统甜点，外酥里嫩，裹上一层洁白的白糖粉。软糯香甜，是老一辈南昌人的童年回忆。</p>
+        </div>
+
+        <div class="food-card">
+          <img src="images/lihao.jpg" alt="藜蒿炒腊肉" onerror="this.style.display='none';this.parentElement.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#999;\'>图片缺失：请放入 lihao.jpg</div>'">
+          <h3>藜蒿炒腊肉</h3>
+          <p>"鄱阳湖的草，南昌人的宝"。藜蒿清香脆嫩，搭配咸香腊肉，是赣菜中的经典名菜。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 南昌话词典 (3D 翻转亮点) -->
+    <section class="dialect-section">
+      <h2 style="text-align: center; margin-bottom: 30px; color: var(--text-color);">南昌话小词典</h2>
+      <p style="text-align: center; margin-bottom: 40px; color: var(--text-light);)">鼠标悬停卡片查看普通话含义</p>
+      
+      <div class="dialect-grid">
+        <!-- 卡片 1 -->
+        <div class="dialect-card">
+          <div class="dialect-inner">
+            <div class="dialect-front">
+              <h3>恰噶</h3>
+              <p>(qià gā)</p>
+              <p style="margin-top:10px; font-style:italic;">点击翻转</p>
+            </div>
+            <div class="dialect-back">
+              <h3>厉害 / 棒</h3>
+              <p>用来称赞某人或某事非常出色</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 2 -->
+        <div class="dialect-card">
+          <div class="dialect-inner">
+            <div class="dialect-front">
+              <h3>恰饭</h3>
+              <p>(qià fàn)</p>
+              <p style="margin-top:10px; font-style:italic;">点击翻转</p>
+            </div>
+            <div class="dialect-back">
+              <h3>吃饭</h3>
+              <p>"恰"在南昌话中就是"吃"的意思</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 3 -->
+        <div class="dialect-card">
+          <div class="dialect-inner">
+            <div class="dialect-front">
+              <h3>老表</h3>
+              <p>(lǎo biǎo)</p>
+              <p style="margin-top:10px; font-style:italic;">点击翻转</p>
+            </div>
+            <div class="dialect-back">
+              <h3>表亲 / 朋友</h3>
+              <p>对江西人的亲切称呼，也指表兄弟</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 4 -->
+        <div class="dialect-card">
+          <div class="dialect-inner">
+            <div class="dialect-front">
+              <h3>孺子路</h3>
+              <p>(rú zǐ lù)</p>
+              <p style="margin-top:10px; font-style:italic;">点击翻转</p>
+            </div>
+            <div class="dialect-back">
+              <h3>著名美食街</h3>
+              <p>南昌最热闹的美食一条街</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023 魅力南昌城市介绍网 | Web 前端开发期末大作业</p>
+      <p>Designed by <span>你的名字</span> (学号：XXXXXX)</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
